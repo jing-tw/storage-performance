@@ -1,0 +1,3 @@
+#  (b) snapshot 30 vm
+#      (async) .\snapshot-vm.ps1 -async:$true  -num $count
+#      (sync) .\snapshot-vm.ps1  -num $count 
