@@ -1,0 +1,10 @@
+connect-viserver -server 192.168.1.200 -user root -password 1111111
+
+$count=10
+$esxi_host_ip='192.168.1.102'
+$vm_prefix_name="$($esxi_host_ip)-20150427v"
+
+.\create-vm-general-purpose-profile-async.ps1 -esxi_host_ip $esxi_host_ip -vm_prefix_name $vm_prefix_name -num $count
+
+
+.\remove-vm.ps1 -num $count
