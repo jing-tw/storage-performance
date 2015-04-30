@@ -41,5 +41,5 @@ while($out -ne 1){
 }
 
 # report
-.\Use-Culture.ps1 en-US {get-task} | export-csv "$($vm_prefix_name)_report-create-vm-general-purpose-profile-async.csv"
+.\Use-Culture.ps1 en-US {get-task} | export-csv "$($vm_prefix_name)_report-create-vm-general-purpose-profile-async-$($dateinfo).csv"
 Write-Host "done!"

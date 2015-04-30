@@ -5,7 +5,7 @@
 #
 # Batch
 #  (a) clone 30 vm
-#      (async) .\clone-vm.ps1 -esxi_host_ip $esxi_host_ip -clone_source_vm 'clone-source2' -vm_prefix_name '20150427v' -num $count
+#      (async) .\clone-vm.ps1 -esxi_host_ip $esxi_host_ip -tempalte_img "win7-test-01" -vm_prefix_name '20150427v' -num $count
 #
 # remove vm
 # . ./remove-vm.ps1 -num 10
@@ -14,7 +14,7 @@ param (
 	[int]$num=1,
 	[string] $target_vm=$null,
 	[string] $esxi_host_ip='192.168.1.101',
-	[string] $clone_source_vm='clone-source2',
+	[string] $tempalte_img="win7-test-01",
 	[string] $vm_prefix_name='vm_prefix_name'
 )
 
@@ -26,7 +26,7 @@ $vDISK=60
 $global:creation_start_time = Get-Date
 1..$num | foreach {
 	$date=Get-Date
-	new-vm -vmhost $esxi_host_ip -name $vm_prefix_name$_ -datastore VIRTUALSTOR  -vm $clone_source_vm -RunAsync:$true
+	new-vm -vmhost $esxi_host_ip -name $vm_prefix_name$_ -datastore VIRTUALSTOR  -Template $tempalte_img -RunAsync:$true
 
 	
 	$global:total_runtime = $(Get-Date) - $global:creation_start_time
@@ -63,5 +63,5 @@ while($out -ne 1){
 }
 
 # report
-.\Use-Culture.ps1 en-US {get-task} | export-csv "$($vm_prefix_name)_report-clone-from-vm-general-purpose-profile-async.csv"
+.\Use-Culture.ps1 en-US {get-task} | export-csv "$($vm_prefix_name)_report-clone-from-template-general-purpose-profile-async.csv"
 Write-Host "done!"

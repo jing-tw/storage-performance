@@ -8,7 +8,7 @@ $count=4
 $esxi_host_ip='192.168.1.101'
 $esxi_host_ip_destination='192.168.1.103'
 $run_index=1
-$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150427v"
+$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150428v"
 .\move-vm-general-purpose-profile-async.ps1 -esxi_host_ip_destination $esxi_host_ip_destination -vm_prefix_name $vm_prefix_name -num $count
 
 # Host 3	VirtualStor	4 * 30GB Win7 VM	Boot VM
@@ -33,7 +33,7 @@ $count=4
 $esxi_host_ip='192.168.1.101'
 $esxi_host_ip_destination='192.168.1.103'
 $run_index=2
-$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150427v"
+$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150428v"
 .\move-vm-general-purpose-profile-async.ps1 -esxi_host_ip_destination $esxi_host_ip_destination -vm_prefix_name $vm_prefix_name -num $count
 
 # Host 3	VirtualStor	4 * 30GB Win7 VM	Boot VM
@@ -58,7 +58,7 @@ $count=4
 $esxi_host_ip='192.168.1.101'
 $esxi_host_ip_destination='192.168.1.103'
 $run_index=3
-$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150427v"
+$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150428v"
 .\move-vm-general-purpose-profile-async.ps1 -esxi_host_ip_destination $esxi_host_ip_destination -vm_prefix_name $vm_prefix_name -num $count
 
 # Host 3	VirtualStor	4 * 30GB Win7 VM	Boot VM

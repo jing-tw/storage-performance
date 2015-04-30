@@ -1,7 +1,17 @@
-connect-viserver -server 192.168.1.200 -user root -password 1111111
+#connect-viserver -server 192.168.1.200 -user root -password 1111111
+
+#$count=10
+#$vm_prefix_name='20150427v'
+
+#.\create-vm-general-purpose-profile-sequential.ps1 -vm_prefix_name $vm_prefix_name -num $count
+#.\remove-vm.ps1 -num $count
+
 
 $count=10
-$vm_prefix_name='20150427v'
+$esxi_host_ip='192.168.1.101'
+$run_index=2
+$vm_prefix_name="$($esxi_host_ip)-run-$($run_index)-20150430v"
 
-.\create-vm-general-purpose-profile-sequential.ps1 -vm_prefix_name $vm_prefix_name -num $count
-.\remove-vm.ps1 -num $count
+./create-vm-general-purpose-profile-async.ps1 -esxi_host_ip $esxi_host_ip -vm_prefix_name $vm_prefix_name -num $count
+
+#.\remove-vm.ps1 -num $count
