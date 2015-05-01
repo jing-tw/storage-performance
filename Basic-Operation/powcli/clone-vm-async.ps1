@@ -5,7 +5,7 @@
 #
 # Batch
 #  (a) clone 30 vm
-#      (async) .\clone-vm.ps1 -esxi_host_ip $esxi_host_ip -clone_source_vm 'clone-source2' -vm_prefix_name '20150427v' -num $count
+#      (async) .\clone-vm.ps1 -esxi_host_ip $esxi_host_ip -clone_source_vm 'clone-source2' -vm_datastore 'datastore-103' -vm_prefix_name '20150427v' -num $count
 #
 # remove vm
 # . ./remove-vm.ps1 -num 10
@@ -15,7 +15,8 @@ param (
 	[string] $target_vm=$null,
 	[string] $esxi_host_ip='192.168.1.101',
 	[string] $clone_source_vm='clone-source2',
-	[string] $vm_prefix_name='vm_prefix_name'
+	[string] $vm_prefix_name='vm_prefix_name',
+	[string] $vm_datastore='VIRTUALSTOR'
 )
 
 $vCPU=2
@@ -26,7 +27,7 @@ $vDISK=60
 $global:creation_start_time = Get-Date
 1..$num | foreach {
 	$date=Get-Date
-	new-vm -vmhost $esxi_host_ip -name $vm_prefix_name$_ -datastore VIRTUALSTOR  -vm $clone_source_vm -RunAsync:$true
+	new-vm -vmhost $esxi_host_ip -name $vm_prefix_name$_ -datastore $vm_datastore  -vm $clone_source_vm -RunAsync:$true
 
 	
 	$global:total_runtime = $(Get-Date) - $global:creation_start_time
